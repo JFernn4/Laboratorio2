@@ -29,6 +29,7 @@ while (menu)
                         case 1:
                             {
                                 Console.Clear();
+                                HabitacionSimple.AgregarHabitacionSimple(listaHabitaciones);
                                 break;
                             }
                         case 2:

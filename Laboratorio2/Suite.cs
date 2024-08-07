@@ -16,5 +16,6 @@ namespace Laboratorio2
             NumeroDeHabitaciones = numeroDeHabitaciones;
             TieneJacuzzi = tieneJacuzzi;
         }
+        public static void 
     }
 }
