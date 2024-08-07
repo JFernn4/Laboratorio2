@@ -34,6 +34,7 @@ while (menu)
                         case 2:
                             {
                                 Console.Clear();
+                                HabitacionDoble.AgregarHabitacionDoble(listaHabitaciones);
                                 break;
                             }
                         case 3:
