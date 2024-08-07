@@ -41,11 +41,13 @@ while (menu)
                         case 3:
                             {
                                 Console.Clear();
+                                Suite.AgregarSuite(listaHabitaciones);
                                 break;
                             }
                         case 4:
                             {
                                 Console.Clear();
+                                HabitacionDeluxe.AgregarHabitacionDeluxe(listaHabitaciones);
                                 break;
                             }
                         case 5:
@@ -58,6 +60,12 @@ while (menu)
                 }
 
                 Console.Clear();
+                break;
+            }
+        case 2:
+            {
+                Console.Clear() ;
+                Habitacion.MostrarInformacion(listaHabitaciones);
                 break;
             }
     }

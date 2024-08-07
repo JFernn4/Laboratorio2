@@ -49,6 +49,8 @@ namespace Laboratorio2
                     Console.ReadKey();
                 }
             }
+            Suite suite= new Suite(numero, precioPorNoche, disponible, clienteAsignado, numeroDeHabitaciones, tieneJacuzzi);
+            listaHabitaciones.Add(suite);
         }
     }
 }
