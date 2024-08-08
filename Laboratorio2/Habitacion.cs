@@ -97,5 +97,46 @@ namespace Laboratorio2
             }
             Console.ReadKey();
         }
+        public static void CambiarDisponibilidad(Habitacion habitacion)
+        {
+            habitacion.Disponible = false;
+        }
+        public static void AsignarHabitacionACliente(List<Habitacion> listaHabitaciones)
+        {
+            Console.WriteLine("Ingrese el número de habtiación que desea asignar.");
+            int habitacionBuscar = Convert.ToInt32(Console.ReadLine());
+            Habitacion buscar = listaHabitaciones.Find(p => p.Numero == habitacionBuscar);
+            if (buscar != null)
+            {
+                Console.WriteLine("No se ha encontrado la habitación.");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("Ingrese el nombre del cliente");
+                string nuevoCliente = Console.ReadLine();
+                nuevoCliente = buscar.ClienteAsignado;
+                Console.WriteLine($"Se ha asignado la habitación {buscar.Numero} al cliente {buscar.ClienteAsignado}.");
+                Habitacion.CambiarDisponibilidad(buscar);
+                Console.ReadKey();
+            }
+        }
+        public static void LiberarHabitacionACliente(List<Habitacion> listaHabitaciones)
+        {
+            Console.WriteLine("Ingrese el número de habtiación que desea liberar.");
+            int habitacionBuscar = Convert.ToInt32(Console.ReadLine());
+            Habitacion buscar = listaHabitaciones.Find(p => p.Numero == habitacionBuscar);
+            if (buscar != null)
+            {
+                Console.WriteLine("No se ha encontrado la habitación.");
+                Console.ReadKey();
+            }
+            else
+            {
+                buscar.Disponible = true;
+                buscar.ClienteAsignado = "Vacío.";
+            }
+            Console.WriteLine("Se ha liberado la habitaciòn.");
+        }
     }
 }

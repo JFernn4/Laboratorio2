@@ -25,9 +25,5 @@ namespace Laboratorio2
                 Console.ReadKey();
             }
         }
-        public static void AsignarHabitacionACliente(List<Habitacion> listaHabitaciones)
-        {
-
-        }
     }
 }

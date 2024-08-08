@@ -77,6 +77,18 @@ while (menu)
         case 4:
             {
                 Console.Clear();
+                Habitacion.AsignarHabitacionACliente(listaHabitaciones);
+                break;
+            }
+        case 5:
+            {
+                Console.Clear();
+                break;
+            }
+        case 6:
+            {
+                Console.Clear();
+                menu=false;
                 break;
             }
     }
@@ -90,4 +102,3 @@ while (menu)
         Console.WriteLine("5. Liberar habitación.");
         Console.WriteLine("6. Salir.");
     }
-    static void 
