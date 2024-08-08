@@ -35,6 +35,7 @@ namespace Laboratorio2
                     {
                         estado = "Ocupada";
                     }
+                    Console.WriteLine("HABITACIÓN SIMPLE");
                     Console.WriteLine($"Número de habitación: {habitacionSimple.Numero}.  Precio por noche: Q.{habitacionSimple.PrecioPorNoche}. Estado: {estado}. Cliente asignado: {habitacionSimple.ClienteAsignado} Número de camas: {habitacionSimple.NumeroDeCamas}");
                 }
                 if (habitacion is HabitacionDoble habitacionDoble)
@@ -57,6 +58,7 @@ namespace Laboratorio2
                     {
                         estado = "Ocupada";
                     }
+                    Console.WriteLine("HABITACIÓN DOBLE");
                     Console.WriteLine($"Número de habitación: {habitacionDoble.Numero}. Precio por noche: Q.{habitacionDoble.PrecioPorNoche}. Estado: {estado}. Cliente asignado: {habitacionDoble.ClienteAsignado} Vistas: {vistas}.");
                 }
                 if (habitacion is Suite suite)
@@ -79,7 +81,8 @@ namespace Laboratorio2
                     {
                         estado = "Ocupada";
                     }
-                    Console.WriteLine($"Número de habitación: {suite.Numero}. Precio por noche: Q.{suite.PrecioPorNoche}. Estado: {estado}. Cliente asignado: {suite.ClienteAsignado} Número de habitaciones: {suite.NumeroDeHabitaciones}. {estado}.");
+                    Console.WriteLine("SUITE");
+                    Console.WriteLine($"Número de habitación: {suite.Numero}. Precio por noche: Q.{suite.PrecioPorNoche}. Estado: {estado}. Cliente asignado: {suite.ClienteAsignado} Número de habitaciones: {suite.NumeroDeHabitaciones}. {jacuzzi}.");
                 }
                 if (habitacion is HabitacionDeluxe habitacionDeluxe)
                 {
@@ -92,6 +95,7 @@ namespace Laboratorio2
                     {
                         estado = "Ocupada";
                     }
+                    Console.WriteLine("HABITACIÓN DELUXE");
                     Console.WriteLine($"Número de habitación: {habitacionDeluxe.Numero}. Precio por noche: Q.{habitacionDeluxe.PrecioPorNoche}. Estado: {estado}. Cliente asignado: {habitacionDeluxe.ClienteAsignado} Servicios extras: {habitacionDeluxe.ServiciosExtras}");
                 }
             }
@@ -103,47 +107,55 @@ namespace Laboratorio2
         }
         public static void AsignarHabitacionACliente(List<Habitacion> listaHabitaciones)
         {
+            try
+            {
             Console.WriteLine("Ingrese el número de habtiación que desea asignar.");
             int habitacionBuscar = Convert.ToInt32(Console.ReadLine());
             Habitacion buscar = listaHabitaciones.Find(p => p.Numero == habitacionBuscar);
-            if (buscar == null)
-            {
-                Console.WriteLine("No se ha encontrado la habitación.");
-                Console.ReadKey();
-            }
-            else
-            {
-                if (buscar is HabitacionSimple habitacion || buscar is HabitacionDoble habitacionDoble || buscar is Suite suite || buscar is HabitacionDeluxe habitacionDeluxe)
+                if (buscar == null)
                 {
-                    Console.WriteLine("Ingrese el nombre del cliente");
-                    string nuevoCliente = Console.ReadLine();
-                    buscar.ClienteAsignado = nuevoCliente;
-                    Console.WriteLine($"Se ha asignado la habitación {buscar.Numero} al cliente {buscar.ClienteAsignado}.");
-                    Habitacion.CambiarDisponibilidad(buscar);
+                    Console.WriteLine("No se ha encontrado la habitación.");
+                    Console.ReadKey();
                 }
-                Console.ReadKey();
+                else
+                {
+                    if (buscar is HabitacionSimple habitacion || buscar is HabitacionDoble habitacionDoble || buscar is Suite suite || buscar is HabitacionDeluxe habitacionDeluxe)
+                    {
+                        Console.WriteLine("Ingrese el nombre del cliente");
+                        string nuevoCliente = Console.ReadLine();
+                        buscar.ClienteAsignado = nuevoCliente;
+                        Console.WriteLine($"Se ha asignado la habitación {buscar.Numero} al cliente {buscar.ClienteAsignado}.");
+                        Habitacion.CambiarDisponibilidad(buscar);
+                    }
+                    Console.ReadKey();
+                }
             }
+            catch (Exception ex) { Console.WriteLine(ex.Message); Console.ReadKey(); }
         }
         public static void LiberarHabitacionACliente(List<Habitacion> listaHabitaciones)
         {
-            Console.WriteLine("Ingrese el número de habtiación que desea liberar.");
-            int habitacionBuscar = Convert.ToInt32(Console.ReadLine());
-            Habitacion buscar = listaHabitaciones.Find(p => p.Numero == habitacionBuscar);
-            if (buscar != null)
+            try
             {
-                Console.WriteLine("No se ha encontrado la habitación.");
+                Console.WriteLine("Ingrese el número de habtiación que desea liberar.");
+                int habitacionBuscar = Convert.ToInt32(Console.ReadLine());
+                Habitacion buscar = listaHabitaciones.Find(p => p.Numero == habitacionBuscar);
+                if (buscar == null)
+                {
+                    Console.WriteLine("No se ha encontrado la habitación.");
+                    Console.ReadKey();
+                }
+                else
+                {
+                    if (buscar is HabitacionSimple habitacion || buscar is HabitacionDoble habitacionDoble || buscar is Suite suite || buscar is HabitacionDeluxe habitacionDeluxe)
+                    {
+                        buscar.Disponible = true;
+                        buscar.ClienteAsignado = "Vacío.";
+                    }
+                }
+                Console.WriteLine("Se ha liberado la habitación.");
                 Console.ReadKey();
             }
-            else
-            {
-                if (buscar is HabitacionSimple habitacion || buscar is HabitacionDoble habitacionDoble || buscar is Suite suite || buscar is HabitacionDeluxe habitacionDeluxe)
-                {
-                    buscar.Disponible = true;
-                    buscar.ClienteAsignado = "Vacío.";
-                }
-            }
-            Console.WriteLine("Se ha liberado la habitación.");
-            Console.ReadKey();
+            catch (Exception ex) { Console.WriteLine(ex.Message); Console.ReadKey(); }
         }
     }
 }
