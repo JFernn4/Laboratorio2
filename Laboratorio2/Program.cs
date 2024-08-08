@@ -65,7 +65,18 @@ while (menu)
         case 2:
             {
                 Console.Clear() ;
+                GestorHabitaciones.EliminarHabitacion(listaHabitaciones);
+                break;
+            }
+        case 3:
+            {
+                Console.Clear();
                 Habitacion.MostrarInformacion(listaHabitaciones);
+                break;
+            }
+        case 4:
+            {
+                Console.Clear();
                 break;
             }
     }
@@ -79,3 +90,4 @@ while (menu)
         Console.WriteLine("5. Liberar habitación.");
         Console.WriteLine("6. Salir.");
     }
+    static void 
