@@ -136,8 +136,11 @@ namespace Laboratorio2
             }
             else
             {
-                buscar.Disponible = true;
-                buscar.ClienteAsignado = "Vacío.";
+                if (buscar is HabitacionSimple habitacion || buscar is HabitacionDoble habitacionDoble || buscar is Suite suite || buscar is HabitacionDeluxe habitacionDeluxe)
+                {
+                    buscar.Disponible = true;
+                    buscar.ClienteAsignado = "Vacío.";
+                }
             }
             Console.WriteLine("Se ha liberado la habitación.");
             Console.ReadKey();
