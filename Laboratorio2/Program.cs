@@ -83,6 +83,7 @@ while (menu)
         case 5:
             {
                 Console.Clear();
+                Habitacion.LiberarHabitacionACliente(listaHabitaciones);
                 break;
             }
         case 6:

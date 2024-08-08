@@ -13,7 +13,7 @@ namespace Laboratorio2
             Console.WriteLine("Ingrese el número de habitación que desea eliminar.");
             int habitacionEliminar = Convert.ToInt32(Console.ReadLine());
             Habitacion eliminar = listaHabitaciones.Find(p => p.Numero == habitacionEliminar);
-            if (eliminar != null)
+            if (eliminar == null)
             {
                 Console.WriteLine("No se ha encontrado la habitación.");
                 Console.ReadKey();
